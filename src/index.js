@@ -1,6 +1,13 @@
 
 import getWeatherData from './getWeather';
+
+//Take note here
+//to see whether checkbox is true or false, you queryselect the input, 
+//not the input container nor the label
 const search = document.querySelector('[cityform]')
+const checkBox = document.querySelector('.checkbox')
+const unitLabel = document.querySelector('#unitName')
+
 
 
 search.addEventListener('click', e => {
@@ -12,7 +19,10 @@ search.addEventListener('click', e => {
     let cityValue = city.value.toLowerCase();
     getWeatherData(cityValue)
     city.value = null;
+})
 
+checkBox.addEventListener('click', () => {
+    unitChange()
 })
 
 //When another city is submitted, clears all the divs
@@ -28,13 +38,14 @@ function clearContent(){
     }
 }
 
-const checkBox = document.querySelector('#checkbox')
-const unitLabel = document.querySelector('#unitName')
 
-checkBox.addEventListener('click', () => {
-    if (checkBox.checked == true){
+
+function unitChange(){
+    if (checkBox.checked){
         unitLabel.innerHTML = 'celsius'
+        console.log('cel')
     } else {
         unitLabel.innerHTML = 'fahrenheit'
+        console.log('Fa')
      }
-})
+}
