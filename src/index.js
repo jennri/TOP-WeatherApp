@@ -28,7 +28,13 @@ function clearContent(){
     }
 }
 
-function changeUnit(){
-    
-}
+const checkBox = document.querySelector('#checkbox')
+const unitLabel = document.querySelector('#unitName')
 
+checkBox.addEventListener('click', () => {
+    if (checkBox.checked == true){
+        unitLabel.innerHTML = 'celsius'
+    } else {
+        unitLabel.innerHTML = 'fahrenheit'
+     }
+})
