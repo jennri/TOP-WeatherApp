@@ -1,51 +1,66 @@
 
 const search = document.querySelector('[cityform]')
+const APIkey= '88261321c9f046fcade100409230306'
 
 search.addEventListener('click', e => {
     e.preventDefault();
-    const APIkey= '88261321c9f046fcade100409230306'
     const city = document.querySelector('[cityinput]')
         if (city.value == null || city.value === "") return
 
     let cityValue = city.value.toLowerCase();
+    getWeatherData(cityValue)
+    city.value = null;
 
+})
+
+async function getWeatherData(cityValue) {
     //All of this is how to retrieve data using API
     //Fetch takes the API Key and the city input, followed by two .then funcitons
-    fetch(`https://api.weatherapi.com/v1/current.json?key=`+APIkey+`&q=`+cityValue, {
+    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=`+APIkey+`&q=`+cityValue, {
         mode: 'cors'
     }).then(function(response) {
         return response.json();
     })
     .then(function(response) {
-        const weather = {
-            cityName: response.location.name,
-            cityTime: response.location.localtime,
-            feelsLike: response.current.condition,
-            temp_c: response.current.temp_c,
-            temp_c_feels: response.current.feelslike_c,
-            humidity: response.current.humidity, 
-            uv: response.current.uv,
-            windSpeed: response.current.wind_kph,
-            windDir: response.current.wind_dir,
-        }
-        return weather;
-    })
+        const content = document.querySelector('#content')
+        const pageContent = document.createElement('div')
+        pageContent.classList.add('page-content')
     
-    city.value = null;
+        const displayCityName = document.createElement('h2')
+        displayCityName.textContent = response.location.name;
+        pageContent.appendChild(displayCityName)
 
-})
+        const displayLocalTime = document.createElement('p')
+        displayLocalTime.textContent = response.location.localtime;
+        pageContent.appendChild(displayLocalTime)
 
+        const tempC = document.createElement('h1')
+        tempC.textContent = response.current.temp_c + "°C"
+        pageContent.appendChild(tempC)
 
-function renderDisplay(weather){
-    // const content = document.querySelector('#content')
-    // const pageContent = document.createElement('div')
-    // pageContent.classList.add('page-content')
+        const feelsTempC = document.createElement('h2')
+        feelsTempC.textContent = response.current.feelslike_c + "°C"
+        pageContent.appendChild(feelsTempC)
 
-    // const displayCityName = document.createElement('h1')
-    // displayCityName.textContent = response.location.name;
+        const humidity = document.createElement('h2')
+        humidity.textContent = response.current.humidity + "%"
+        pageContent.appendChild(humidity)
 
-    // pageContent.appendChild(displayCityName)
+        const uv = document.createElement('h2')
+        uv.textContent = response.current.uv
+        pageContent.appendChild(uv)
 
+        const windSpeed = document.createElement('h2')
+        windSpeed.textContent = response.current.wind_kph 
+        pageContent.appendChild(windSpeed)
 
+        const windDir = document.createElement('h2')
+        windDir.textContent = response.current.wind_dir
+        pageContent.appendChild(windDir)
 
+        content.appendChild(pageContent)
+    
+    })
+ 
 }
+
