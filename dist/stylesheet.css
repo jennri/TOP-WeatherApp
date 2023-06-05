@@ -7,6 +7,7 @@ html {
     align-items: center;
     justify-content: center;
     background: #242424;
+    overflow: hidden;
     /* color: rgb(221, 221, 221) */
 }
 
@@ -17,6 +18,7 @@ html {
     padding: 20px;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
+    width: 348px;
 }
 
 .textbox, 
@@ -51,6 +53,7 @@ input:focus, input[type='text']{
     color: #161616;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    width: 388px;
 }
 
 .content h2{
@@ -59,8 +62,16 @@ input:focus, input[type='text']{
     padding-top: 40px;
 }
 
+.content h1 {
+    padding-left: 20px;
+    font-size: 50px;
+    margin-top: -3px;
+}
+
 .content p {
-    margin-bottom: -5px;
+    font-weight: bold;
+    margin-top: -30px;
+    padding-left: 20px;
 }
 
 .page-content{

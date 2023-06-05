@@ -58,13 +58,14 @@ async function getWeatherData(cityValue) {
         imgg.setAttribute("src", "E:/Programming Learning/Git Repos/TOP-WeatherApp/dist/img/day/" + iconValue + ".png")
         weatherIcon.appendChild(imgg)
 
+        const tempC = document.createElement('h1')
+        tempC.textContent = response.current.temp_c + "°C"
+        weatherContent.appendChild(tempC)
+
         const feelsTempC = document.createElement('p')
         feelsTempC.textContent = "Feels like " + response.current.feelslike_c + "°C"
         weatherContent.appendChild(feelsTempC)
 
-        const tempC = document.createElement('h1')
-        tempC.textContent = response.current.temp_c + "°C"
-        weatherContent.appendChild(tempC)
 
         weatherContainer.appendChild(weatherIcon)
         weatherContainer.appendChild(weatherContent)
