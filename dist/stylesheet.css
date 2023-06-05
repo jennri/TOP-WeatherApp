@@ -55,13 +55,24 @@ input:focus, input[type='text']{
 
 .content h2{
     background-color: rgb(216, 212, 212);
-    margin-top: -5px;
+    margin-top: -20px;
     padding-top: 40px;
+}
+
+.content p {
+    margin-bottom: -5px;
 }
 
 .page-content{
     text-align: center;
 }
+
+.weather-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .details-content {
     display: flex;
