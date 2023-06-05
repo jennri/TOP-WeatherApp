@@ -8,13 +8,13 @@ search.addEventListener('click', e => {
         if (city.value == null || city.value === "") return
     
     clearContent()
-
     let cityValue = city.value.toLowerCase();
     getWeatherData(cityValue)
     city.value = null;
 
 })
 
+//When another city is submitted, clears all the divs
 function clearContent(){
     const content = document.querySelector('#content')
     const pageContent = document.querySelector('.page-content');
@@ -37,14 +37,15 @@ async function getWeatherData(cityValue) {
         return response.json();
     })
     .then(function(response) {
+        //Linking to the HTML div, then creating another div that will display and render all the data
         const content = document.querySelector('#content')
         const pageContent = document.createElement('div')
         pageContent.classList.add('page-content')
-    
+
+        //Appending location to weather card
         const displayCityName = document.createElement('h2')
         displayCityName.textContent = response.location.name + ", " + response.location.country
         pageContent.appendChild(displayCityName)
-
 
         const weatherContent = document.createElement('div')
         const weatherIcon = document.createElement('div')
@@ -52,11 +53,12 @@ async function getWeatherData(cityValue) {
         const weatherContainer = document.createElement('div')
         weatherContainer.classList.add('weather-content')
 
+        //Used icons from the free weather API website. Downloaded them all and since each condition comes with a unique number,
+        //the number is used to bring up the icon most suitable to the weather condition
         let iconValue = response.current.condition.icon.slice(-7, -4)
-
-        const imgg = new Image(100, 100)
-        imgg.setAttribute("src", "E:/Programming Learning/Git Repos/TOP-WeatherApp/dist/img/day/" + iconValue + ".png")
-        weatherIcon.appendChild(imgg)
+        const iconImg = new Image(100, 100)
+        iconImg.setAttribute("src", "E:/Programming Learning/Git Repos/TOP-WeatherApp/dist/img/day/" + iconValue + ".png")
+        weatherIcon.appendChild(iconImg)
 
         const tempC = document.createElement('h1')
         tempC.textContent = response.current.temp_c + "°C"
@@ -66,10 +68,11 @@ async function getWeatherData(cityValue) {
         feelsTempC.textContent = "Feels like " + response.current.feelslike_c + "°C"
         weatherContent.appendChild(feelsTempC)
 
-
         weatherContainer.appendChild(weatherIcon)
         weatherContainer.appendChild(weatherContent)
 
+        
+        //Appending other details to weather card
         const detailsContent = document.createElement('div')
         detailsContent.classList.add('details-content')
 

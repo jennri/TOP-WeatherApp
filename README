@@ -1,0 +1,6 @@
+Weather App for the Odin Project
+
+Ideas that I'll maybe do one day
+- Have an icon set for the night weather, the API used doesn't seem to have it. 
+- Autofill the search bar to give a list of cities/ countries
+- If an invalid input is entered, return with a invalid prompt
