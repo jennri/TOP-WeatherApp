@@ -1,6 +1,6 @@
-
+import key from './APIkey';
 const search = document.querySelector('[cityform]')
-const APIkey= '88261321c9f046fcade100409230306'
+
 
 search.addEventListener('click', e => {
     e.preventDefault();
@@ -16,7 +16,7 @@ search.addEventListener('click', e => {
 async function getWeatherData(cityValue) {
     //All of this is how to retrieve data using API
     //Fetch takes the API Key and the city input, followed by two .then funcitons
-    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=`+APIkey+`&q=`+cityValue, {
+    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=`+key()+`&q=`+cityValue, {
         mode: 'cors'
     }).then(function(response) {
         return response.json();
