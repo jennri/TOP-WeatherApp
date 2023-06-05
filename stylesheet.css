@@ -1,10 +1,71 @@
 html {
-    background-color: antiquewhite;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #242424;
+    /* color: rgb(221, 221, 221) */
 }
 
-.searchbarcontent {
-    border: 1px solid black;
+
+.form {
+    display: flex;
+    background-color: rgb(216, 212, 212);
+    padding: 20px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.textbox, 
+.textboxbtn {
+    align-items: center;
+    border: none;
+    background-color: rgb(216, 212, 212);
+    font-size: 25px; 
+}
+
+/* Removes border on input regardless of state */
+input:focus, input[type='text']{
+    border: none;
+    outline: none;
+}
+
+.btnContainer button{
+    width: 30px;
+    height: 30px;
+    background-image: url(search.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
 }
 
 
+
+
+
+.content{
+    background-color: rgb(216, 212, 212);
+    color: #161616;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.content h2{
+    background-color: rgb(216, 212, 212);
+    margin-top: -5px;
+    padding-top: 40px;
+}
+
+.page-content{
+    text-align: center;
+}
+
+.details-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px 0px 20px;
+}
 
