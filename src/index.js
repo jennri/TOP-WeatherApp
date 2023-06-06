@@ -69,7 +69,7 @@ async function unitChange() {
         }).then(function (response) {
             const tempC = document.querySelector('#currentTempId')
             tempC.textContent = response.current.temp_f + "°F"
-        
+
             const feelsTempC = document.querySelector('#feelsLikeId')
             feelsTempC.textContent = "Feels like " + response.current.feelslike_f + "°F"
         })
