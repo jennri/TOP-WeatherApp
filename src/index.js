@@ -12,9 +12,12 @@ const unitLabel = document.querySelector('#unitName')
 search.addEventListener('click', e => {
     e.preventDefault();
     const city = document.querySelector('[cityinput]')
-    if (city.value == null || city.value === "") return
-
+    const unitSwitch = document.querySelector('#switchContainer')
+    const cityForm = document.querySelector('[cityForm]')
+    if (city.value === null || city.value === "") return
     clearContent()
+    unitSwitch.style = `display: flex`
+    cityForm.style = `border-top-right-radius: 0px;`
     let cityValue = city.value.toLowerCase();
     getWeatherData(cityValue)
     city.value = null;
@@ -22,7 +25,7 @@ search.addEventListener('click', e => {
 
 
 checkBox.addEventListener('click', () => {
-        unitChange()
+    unitChange()
 })
 
 //When another city is submitted, clears all the divs
@@ -45,7 +48,7 @@ async function unitChange() {
     let cityName = nameArr[0];
 
     if (checkBox.checked) {
-        unitLabel.innerHTML = 'celsius'
+        unitLabel.innerHTML = '°C'
         const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=` + key() + `&q=` + cityName, {
             mode: 'cors'
         }).then(function (response) {
@@ -56,11 +59,9 @@ async function unitChange() {
 
             const feelsTempC = document.querySelector('#feelsLikeId')
             feelsTempC.textContent = "Feels like " + response.current.feelslike_c + "°C"
-            console.log(tempC, feelsTempC)
         })
     } else {
-        unitLabel.innerHTML = 'fahrenheit'
-        console.log('Fa')
+        unitLabel.innerHTML = '°F'
         const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=` + key() + `&q=` + cityName, {
             mode: 'cors'
         }).then(function (response) {
@@ -71,7 +72,6 @@ async function unitChange() {
         
             const feelsTempC = document.querySelector('#feelsLikeId')
             feelsTempC.textContent = "Feels like " + response.current.feelslike_f + "°F"
-            console.log(tempC, feelsTempC)
         })
     }
 }

@@ -21,7 +21,9 @@ async function getWeatherData(cityValue) {
         pageContent.appendChild(displayCityName)
 
         //Appending current temp, min/max temperatures and weather icon
-        const weatherContent = document.createElement('div')
+        const tempContent = document.createElement('div')
+        const tempContentContainer = document.createElement('div')
+        tempContentContainer.classList.add('temp-container')
         const weatherIcon = document.createElement('div')
         const weatherContainer = document.createElement('div')
         weatherContainer.classList.add('weather-content')
@@ -36,16 +38,16 @@ async function getWeatherData(cityValue) {
         const tempC = document.createElement('h1')
         tempC.setAttribute('id', 'currentTempId')
         tempC.textContent = response.current.temp_c + "°C"
-        weatherContent.appendChild(tempC)
+        tempContent.appendChild(tempC)
 
         const feelsTempC = document.createElement('p')
         feelsTempC.setAttribute('id', 'feelsLikeId')
         feelsTempC.textContent = "Feels like " + response.current.feelslike_c + "°C"
-        weatherContent.appendChild(feelsTempC)
+        tempContent.appendChild(feelsTempC)
 
-
+        tempContentContainer.appendChild(tempContent)
         weatherContainer.appendChild(weatherIcon)
-        weatherContainer.appendChild(weatherContent)
+        weatherContainer.appendChild(tempContentContainer)
 
         //Appending other details to weather card
         const detailsContent = document.createElement('div')

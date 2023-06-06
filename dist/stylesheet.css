@@ -18,23 +18,25 @@ html {
 }
 
 .switchContainer {
-    display: flex;
+    display: none;
     justify-content: space-between;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     background-color: rgb(78, 78, 78);
     padding-top: 10px;
     padding-left: 10px;
-    padding-right: 30px;
+    padding-right: 15px;
+    width: 100px;
 
 }
+
 
 .unitName p{
     color: white;
     font-style: italic;
     margin-top: 4px;
-    padding-left: 20px;
-    margin-right: 40px;
+    padding-left: 10px;
+    margin-right: 20px;
 }
 
 .switch {
@@ -96,6 +98,7 @@ html {
     background-color: rgb(216, 212, 212);
     padding: 20px;
     border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     width: 348px;
 }
 
@@ -139,9 +142,6 @@ input:focus, input[type='text']{
     align-items: center;
 }
 
-.commaloc-content {
-    padding-right: 5px;
-}
 
 .content h2{
     background-color: rgb(216, 212, 212);
@@ -153,22 +153,31 @@ input:focus, input[type='text']{
     padding-left: 20px;
     font-size: 50px;
     margin-top: -3px;
+    width: auto;
 }
 
 .content p {
     font-weight: bold;
     margin-top: -30px;
     padding-left: 20px;
+    width: auto;
 }
 
 .page-content{
     text-align: center;
+    width: auto;
 }
 
 .weather-content {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Added a width to the temperatures so changing their units doesn't shift the icon around */
+/* temp container includes the temp and the feels like temp */
+.temp-container {
+    width: 160px;
 }
 
 
