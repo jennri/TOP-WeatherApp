@@ -13,11 +13,13 @@ search.addEventListener('click', e => {
     e.preventDefault();
     const city = document.querySelector('[cityinput]')
     const unitSwitch = document.querySelector('#switchContainer')
-    const cityForm = document.querySelector('[cityForm]')
+    const content = document.querySelector('#content')
+    const form = document.querySelector('[cityform]')
     if (city.value === null || city.value === "") return
     clearContent()
-    unitSwitch.style = `display: flex`
-    cityForm.style = `border-top-right-radius: 0px;`
+    unitSwitch.classList.add('active')
+    content.classList.add('active')
+    form.classList.add('active')
     let cityValue = city.value.toLowerCase();
     getWeatherData(cityValue)
     city.value = null;

@@ -18,7 +18,13 @@ html {
 }
 
 .switchContainer {
-    display: none;
+    transition: opacity 1s ease-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+
+
+    display:flex;
     justify-content: space-between;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
@@ -27,10 +33,12 @@ html {
     padding-left: 10px;
     padding-right: 15px;
     width: 100px;
-    transition:cubic-bezier(1, 0, 0, 1)
-
 }
 
+.switchContainer.active {
+    opacity: 1;
+    height: auto;
+}
 
 .unitName p{
     color: white;
@@ -101,6 +109,14 @@ html {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     width: 348px;
+    
+}
+
+
+.form.active {
+    border-top-right-radius: 0px;
+    opacity: 1;
+    height: auto;
 }
 
 .textbox, 
@@ -139,6 +155,11 @@ input:focus, input[type='text']{
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     width: 388px;
+}
+
+.content.active {
+    opacity: 1;
+    height: auto;
 }
 
 .displayloc-content{

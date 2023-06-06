@@ -5,6 +5,7 @@ Ideas that I'll maybe do one day
 - Max and min temeperatures, API doesn't have this data?
 - Autofill the search bar to give a list of cities/ countries
 - If an invalid input is entered, return with a invalid prompt
+- Better/smoother animations
 
 - Actually make the API private, i dunno how to do that 
   -I'll come back to this once I learned how to use nodejs
