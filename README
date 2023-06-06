@@ -1,5 +1,11 @@
 Weather App for the Odin Project
 
+Look at the project here 
+https://jennri.github.io/TOP-WeatherApp/
+
+Take note that the live page is from a test branch which throws all the js into one js file. The main branch has them all in different files with exports/imports etc.
+Couldn't figure out how to get the site running with the main js files in a dist folder. Will figure out one day. 
+
 Ideas that I'll maybe do one day
 - Have an icon set for the night weather, the API used doesn't seem to have it. 
 - Max and min temeperatures, API doesn't have this data?
