@@ -122,12 +122,25 @@ input:focus, input[type='text']{
     cursor: pointer;
 }
 
+
+
+
 .content{
     background-color: rgb(216, 212, 212);
     color: #161616;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     width: 388px;
+}
+
+.displayloc-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.commaloc-content {
+    padding-right: 5px;
 }
 
 .content h2{
