@@ -16,12 +16,13 @@ async function getWeatherData(cityValue) {
 
         //Appending location to weather card
         const displayCityName = document.createElement('h2')
+        displayCityName.setAttribute('id', 'cityNameId')
         displayCityName.textContent = response.location.name + ", " + response.location.country
         pageContent.appendChild(displayCityName)
 
+        //Appending current temp, min/max temperatures and weather icon
         const weatherContent = document.createElement('div')
         const weatherIcon = document.createElement('div')
-
         const weatherContainer = document.createElement('div')
         weatherContainer.classList.add('weather-content')
 
@@ -29,23 +30,23 @@ async function getWeatherData(cityValue) {
         //the number is used to bring up the icon most suitable to the weather condition
         let iconValue = response.current.condition.icon.slice(-7, -4)
         const iconImg = new Image(100, 100)
-        console.log(response)
-        console.log(response.astro)
         iconImg.setAttribute("src", "E:/Programming Learning/Git Repos/TOP-WeatherApp/dist/img/day/" + iconValue + ".png")
         weatherIcon.appendChild(iconImg)
 
         const tempC = document.createElement('h1')
+        tempC.setAttribute('id', 'currentTempId')
         tempC.textContent = response.current.temp_c + "°C"
         weatherContent.appendChild(tempC)
 
         const feelsTempC = document.createElement('p')
+        feelsTempC.setAttribute('id', 'feelsLikeId')
         feelsTempC.textContent = "Feels like " + response.current.feelslike_c + "°C"
         weatherContent.appendChild(feelsTempC)
+
 
         weatherContainer.appendChild(weatherIcon)
         weatherContainer.appendChild(weatherContent)
 
-        
         //Appending other details to weather card
         const detailsContent = document.createElement('div')
         detailsContent.classList.add('details-content')
