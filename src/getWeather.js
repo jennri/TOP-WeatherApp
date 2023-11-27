@@ -32,7 +32,7 @@ async function getWeatherData(cityValue) {
             //the number is used to bring up the icon most suitable to the weather condition
             let iconValue = response.current.condition.icon.slice(-7, -4)
             const iconImg = new Image(100, 100)
-            iconImg.setAttribute("src", "E:/Programming Learning/Git Repos/TOP-WeatherApp/dist/img/day/" + iconValue + ".png")
+            iconImg.setAttribute("src", "../dist/img/day/" + iconValue + ".png")
             weatherIcon.appendChild(iconImg)
 
             const tempC = document.createElement('h1')
