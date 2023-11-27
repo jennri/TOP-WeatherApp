@@ -36,9 +36,11 @@ function clearContent() {
     const pageContent = document.querySelector('.page-content');
     const detailsContent = document.querySelector('.details-content')
     const weatherContainer = document.querySelector('.weather-content')
+    const minmaxContent = document.querySelector('.minmax-content')
     if (pageContent) {
         content.removeChild(pageContent)
         content.removeChild(detailsContent)
+        content.removeChild(minmaxContent)
         content.removeChild(weatherContainer)
     }
 }
