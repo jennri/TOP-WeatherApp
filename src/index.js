@@ -51,7 +51,7 @@ async function unitChange() {
 
     if (checkBox.checked) {
         unitLabel.innerHTML = '°C'
-        const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=` + key() + `&q=` + cityName, {
+        const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=` + key() + `&q=` + cityName, {
             mode: 'cors'
         }).then(function (response) {
             return response.json();
@@ -61,10 +61,17 @@ async function unitChange() {
 
             const feelsTempC = document.querySelector('#feelsLikeId')
             feelsTempC.textContent = "Feels like " + response.current.feelslike_c + "°C"
+
+            const minTempC = document.querySelector('#minTempId')
+            minTempC.textContent = "Min " + response.forecast.forecastday[0].day.mintemp_c + "°C" 
+
+            const maxTempC = document.querySelector('#maxTempId')
+            maxTempC.textContent = "Min " + response.forecast.forecastday[0].day.maxtemp_c + "°C" 
+                                    
         })
     } else {
         unitLabel.innerHTML = '°F'
-        const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=` + key() + `&q=` + cityName, {
+        const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=` + key() + `&q=` + cityName, {
             mode: 'cors'
         }).then(function (response) {
             return response.json();
@@ -74,6 +81,12 @@ async function unitChange() {
 
             const feelsTempC = document.querySelector('#feelsLikeId')
             feelsTempC.textContent = "Feels like " + response.current.feelslike_f + "°F"
+
+            const minTempC = document.querySelector('#minTempId')
+            minTempC.textContent = "Min " + response.forecast.forecastday[0].day.mintemp_f + "°F" 
+
+            const maxTempC = document.querySelector('#maxTempId')
+            maxTempC.textContent = "Min " + response.forecast.forecastday[0].day.maxtemp_f + "°F" 
         })
     }
 }

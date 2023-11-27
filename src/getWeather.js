@@ -3,7 +3,7 @@ import key from './APIkey';
 async function getWeatherData(cityValue) {
     //All of this is how to retrieve data using API
     //Fetch takes the API Key and the city input, followed by two .then funcitons
-    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=` + key() + `&q=` + cityValue, {
+    const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=` + key() + `&q=` + cityValue, {
         mode: 'cors'
     }).then(function (response) {
         return response.json();
@@ -20,7 +20,7 @@ async function getWeatherData(cityValue) {
             displayCityName.textContent = response.location.name + ", " + response.location.country
             pageContent.appendChild(displayCityName)
 
-            //Appending current temp, min/max temperatures and weather icon
+            //Appending current temp and weather icon
             const tempContent = document.createElement('div')
             const tempContentContainer = document.createElement('div')
             tempContentContainer.classList.add('temp-container')
@@ -30,9 +30,9 @@ async function getWeatherData(cityValue) {
 
             //Used icons from the free weather API website. Downloaded them all and since each condition comes with a unique number,
             //the number is used to bring up the icon most suitable to the weather condition
-            let iconValue = response.current.condition.icon.slice(-7, -4)
+            let iconDayNight = response.current.condition.icon.slice(35)
             const iconImg = new Image(100, 100)
-            iconImg.setAttribute("src", "../dist/img/day/" + iconValue + ".png")
+            iconImg.setAttribute("src", "../dist/img/" + iconDayNight)
             weatherIcon.appendChild(iconImg)
 
             const tempC = document.createElement('h1')
@@ -50,11 +50,22 @@ async function getWeatherData(cityValue) {
             weatherContainer.appendChild(tempContentContainer)
 
             //Appending other details to weather card
+            const minmaxContent = document.createElement('div')
+            minmaxContent.classList.add('minmax-content')
             const detailsContent = document.createElement('div')
             detailsContent.classList.add('details-content')
 
+            const minTemp = document.createElement('h3')
+            minTemp.setAttribute('id', 'minTempId')
+            minTemp.textContent = "Min " + response.forecast.forecastday[0].day.mintemp_c + "°C" 
+            minmaxContent.appendChild(minTemp)
+
+            const maxTemp = document.createElement('h3')
+            maxTemp.setAttribute('id', 'maxTempId')
+            maxTemp.textContent = "Max " + response.forecast.forecastday[0].day.maxtemp_c + "°C"
+            minmaxContent.appendChild(maxTemp)
+            
             const humidity = document.createElement('h3')
-            humidity.setAttribute('class', 'contentDetailsHumidity')
             humidity.textContent = 'Humidity ' + response.current.humidity + " %"
             detailsContent.appendChild(humidity)
 
@@ -63,12 +74,12 @@ async function getWeatherData(cityValue) {
             detailsContent.appendChild(uv)
 
             const windSpeed = document.createElement('h3')
-            windSpeed.setAttribute('class', 'contentDetailsSpeed')
-            windSpeed.textContent = response.current.wind_kph + ' kp/h'
+            windSpeed.textContent = response.current.wind_kph + ' kp/h ' + response.current.wind_dir
             detailsContent.appendChild(windSpeed)
 
             content.appendChild(pageContent)
             content.appendChild(weatherContainer)
+            content.appendChild(minmaxContent)
             content.appendChild(detailsContent)
         })
 
